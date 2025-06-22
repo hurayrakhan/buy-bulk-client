@@ -39,12 +39,12 @@ const NewArrivals = () => {
       <div className='w-10/12 mx-auto border-l-6 border-l-[#FF3F33] py-4 mb-10'>
         <h2 className="text-3xl font-bold mx-4">New Arrivals</h2>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 
         {newArrivalProducts.map((product) => (
           <Fade key={product.id} duration={1000} >
             <div
-            className="group border transition-all duration-300 border-[#FF3F33] hover:shadow-lg hover:shadow-red-500 rounded-lg shadow p-4"
+            className="group transition-all duration-300  hover:shadow-lg hover:shadow-red-500 rounded-lg shadow-xl p-4 h-[300px] overflow-hidden"
           >
             <img
               src={product.image}

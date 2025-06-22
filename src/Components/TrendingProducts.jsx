@@ -38,11 +38,11 @@ const TrendingProducts = () => {
       <div className='w-10/12 mx-auto text-right border-r-6 border-r-[#FF3F33] py-4 mb-10'>
         <h2 className="text-3xl font-bold mx-4">Trending Products</h2>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
         {trendingProducts.map((product) => (
           <Fade key={product.id} duration={1000} >
             <div
-            className="bg-base-200 rounded-xl shadow hover:shadow-md hover:shadow-red-500 transition p-4"
+            className="bg-base-200 h-[300px] overflow-hidden rounded-xl shadow-xl hover:shadow-lg hover:shadow-red-500 transition p-4"
           >
             <img
               src={product.image}
