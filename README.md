@@ -36,11 +36,3 @@ Buy&Bulk is a modern B2B e-commerce platform that connects bulk product supplier
 | Build Tool      | Vite                          |
 
 ---
-
-## 📦 Installation & Setup
-
-### 1. Clone the Repo
-
-```bash
-git clone https://github.com/your-username/buynbulk.git
-cd buynbulk
