@@ -40,7 +40,7 @@ const Dashboard = () => {
       </Helmet>
 
       {/* Sidebar */}
-      <div className={`fixed md:static z-50 bg-white shadow-lg h-screen w-64 transform transition-transform duration-300 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}>
+      <div className={`fixed md:static z-30 bg-white shadow-lg h-screen w-64 transform transition-transform duration-300 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}>
         <div className="p-4 border-b border-gray-200 flex flex-col items-center">
           {user?.photoURL ? (
             <img src={user.photoURL} alt="Profile" className="w-16 h-16 rounded-full object-cover mb-2" />
