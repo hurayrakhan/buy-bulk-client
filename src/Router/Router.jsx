@@ -14,6 +14,7 @@ import Loading from "../Components/Loading";
 import CartPage from "../Pages/CartPage";
 import MyOrders from "../Pages/MyOrders";
 import Profile from "../Pages/Profile";
+import Dashboard from "../Pages/Dashboard";
 
 export const router = createBrowserRouter([
     {
@@ -60,6 +61,10 @@ export const router = createBrowserRouter([
             {
                 path: '/profile',
                 element: <PrivateRouter><Profile></Profile></PrivateRouter>
+            },
+            {
+                path: '/dashboard',
+                element: <PrivateRouter><Dashboard></Dashboard></PrivateRouter>
             }
         ]
     },
