@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { AuthContext } from '../Providers/AuthProvider';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router';
-import { Menu, X } from 'lucide-react';
+import { Menu } from 'lucide-react';
 
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
@@ -34,86 +34,90 @@ const Dashboard = () => {
   const cartValue = cart.reduce((sum, c) => sum + c.quantity * c.price, 0);
 
   return (
-    <div className="min-h-screen flex bg-red-50">
-      <Helmet>
-        <title>Dashboard | Buy&Bulk</title>
-      </Helmet>
+    <div className="min-h-screen bg-[#FFF5F2] flex">
+      <Helmet><title>Dashboard | Buy&Bulk</title></Helmet>
 
       {/* Sidebar */}
-      <div className={`fixed md:static z-30 bg-white shadow-lg h-screen w-64 transform transition-transform duration-300 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}>
-        <div className="p-4 border-b border-gray-200 flex flex-col items-center">
-          {user?.photoURL ? (
-            <img src={user.photoURL} alt="Profile" className="w-16 h-16 rounded-full object-cover mb-2" />
-          ) : (
-            <div className="w-16 h-16 rounded-full bg-gray-300 mb-2" />
-          )}
-          <h2 className="text-lg font-semibold text-[#FF3F33] text-center">{user?.displayName || 'User'}</h2>
+      <aside className={`fixed md:static z-30 bg-white w-64 shadow-lg h-screen transform transition-transform duration-300 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}>
+        <div className="flex flex-col items-center py-6 border-b">
+          <img src={user?.photoURL || '/default-user.png'} alt="User" className="w-20 h-20 rounded-full object-cover" />
+          <h2 className="mt-3 font-bold text-[#FF3F33] text-lg">{user?.displayName || 'User'}</h2>
+          <p className="text-sm text-gray-500">{user?.email}</p>
         </div>
-        <nav className="p-4 space-y-4 text-gray-700 font-medium">
-          <Link to="/dashboard" className="block hover:text-[#FF3F33]">📊 Dashboard</Link>
-          <Link to="/myOrders" className="block hover:text-[#FF3F33]">📦 My Orders</Link>
-          <Link to="/cart" className="block hover:text-[#FF3F33]">🛒 My Cart</Link>
+        <nav className="mt-6 px-4 flex flex-col gap-4 font-medium text-gray-700">
+          <SidebarLink to="/dashboard" label="Dashboard" />
+          <SidebarLink to="/myOrders" label="My Orders" />
+          <SidebarLink to="/cart" label="My Cart" />
         </nav>
-      </div>
+      </aside>
 
-      {/* Main Content */}
+      {/* Main content */}
       <div className="flex-1">
-        {/* Top Navbar (Mobile) */}
-        <div className="bg-white p-4 shadow-md flex justify-between items-center md:hidden">
-          <button onClick={() => setSidebarOpen(true)} className="text-[#FF3F33]">
-            <Menu />
+        {/* Mobile topbar */}
+        <div className="md:hidden flex justify-between items-center bg-white px-4 py-3 shadow">
+          <button onClick={() => setSidebarOpen(!sidebarOpen)}>
+            <Menu className="text-[#FF3F33]" />
           </button>
-          <div className="flex items-center gap-2">
-            {user?.photoURL && (
-              <img src={user.photoURL} alt="User" className="w-8 h-8 rounded-full object-cover" />
-            )}
-            <p className="font-semibold text-[#FF3F33]">Dashboard</p>
-          </div>
+          <span className="text-[#FF3F33] font-semibold">Dashboard</span>
         </div>
 
-        <div className="p-6">
-          {/* Welcome Message */}
-          <h2 className="text-3xl font-bold text-[#FF3F33] mb-4">Welcome, {user?.displayName || 'User'}!</h2>
+        <main className="p-6">
+          <h1 className="text-3xl font-bold text-[#FF3F33] mb-4 py-4">Welcome, {user?.displayName || 'User'}!</h1>
 
-          {/* Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
-            <StatBox title="Total Orders" value={orders.length} color="[#FF3F33]" />
-            <StatBox title="Total Spent" value={`$${totalSpent.toFixed(2)}`} color="green-600" />
-            <StatBox title="Cart Items" value={cart.length} color="[#FF3F33]" />
-            <StatBox title="Cart Value" value={`$${cartValue.toFixed(2)}`} color="yellow-600" />
-            <div className="bg-white p-5 rounded-lg border-l-4 border-[#FF3F33] shadow">
-              <h3 className="text-xl font-semibold mb-1">Profile</h3>
-              <p><strong>Name:</strong> {user?.displayName}</p>
-              <p><strong>Email:</strong> {user?.email}</p>
-            </div>
+          {/* Stats Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+            <StatBox title="Total Orders" value={orders.length} color="red" />
+            <StatBox title="Total Spent" value={`$${totalSpent.toFixed(2)}`} color="green" />
+            <StatBox title="Cart Items" value={cart.length} color="red" />
+            <StatBox title="Cart Value" value={`$${cartValue.toFixed(2)}`} color="yellow" />
           </div>
 
           {/* Recent Orders */}
-          <div className="bg-white p-6 rounded-xl shadow border border-red-100">
-            <h3 className="text-2xl font-semibold text-[#FF3F33] mb-4">Recent Orders</h3>
-            {orders.slice(0, 5).map(order => (
-              <div key={order._id} className="border-b py-3 last:border-b-0 flex justify-between items-center">
-                <div>
-                  <p className="font-medium">{order.productName}</p>
-                  <p className="text-sm text-gray-500">Qty: {order.quantity} • ${order.productPrice}</p>
-                </div>
-                <p className="text-sm text-gray-600">{order.buyingTime}</p>
+          <div className="bg-white shadow rounded-lg p-6 border-t-4 border-[#FF3F33]">
+            <h2 className="text-2xl font-semibold text-[#FF3F33] mb-4">Recent Orders</h2>
+            {orders.length ? (
+              <div className="space-y-4">
+                {orders.slice(0, 5).map(order => (
+                  <div key={order._id} className="flex justify-between border-b pb-2">
+                    <div>
+                      <p className="font-semibold">{order.productName}</p>
+                      <p className="text-sm text-gray-500">Qty: {order.quantity} • ${order.productPrice}</p>
+                    </div>
+                    <span className="text-sm text-gray-600">{order.buyingTime}</span>
+                  </div>
+                ))}
               </div>
-            ))}
-            {orders.length === 0 && <p className="text-gray-400">No orders placed yet.</p>}
+            ) : (
+              <p className="text-gray-400">No recent orders available.</p>
+            )}
           </div>
-        </div>
+        </main>
       </div>
     </div>
   );
 };
 
-// StatBox Component
-const StatBox = ({ title, value, color }) => (
-  <div className={`bg-white p-6 rounded-xl shadow border-l-4 border-${color}`}>
-    <h3 className="text-xl font-semibold mb-1">{title}</h3>
-    <p className={`text-3xl font-bold text-${color}`}>{value}</p>
-  </div>
+// Sidebar link component
+const SidebarLink = ({ to, label }) => (
+  <Link to={to} className="hover:text-[#FF3F33] transition-colors">
+    {label}
+  </Link>
 );
+
+// StatBox component
+const StatBox = ({ title, value, color }) => {
+  const colorMap = {
+    red: 'border-red-500 text-red-600',
+    green: 'border-green-500 text-green-600',
+    yellow: 'border-yellow-500 text-yellow-600'
+  };
+
+  return (
+    <div className={`bg-white shadow border-l-4 p-5 rounded-lg ${colorMap[color]}`}>
+      <h3 className="text-lg font-semibold mb-1">{title}</h3>
+      <p className={`text-2xl font-bold ${colorMap[color]}`}>{value}</p>
+    </div>
+  );
+};
 
 export default Dashboard;
