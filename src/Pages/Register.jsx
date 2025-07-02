@@ -68,8 +68,8 @@ const Register = () => {
                 <title>Register | Buy&Bulk</title>
                 <meta name="description" content="Create an account on Buy&Bulk to access exclusive bulk buying and selling opportunities." />
             </Helmet>
-            <div className='animate__animated animate__fadeInRight w-8/12 flex flex-row-reverse h-[calc(100vh-200px)] mx-auto rounded-2xl bg-white border border-[#FF3F33] shadow-2xl shadow-red-400'>
-                <div className='w-1/2 px-6 pb-20 pt-10 bg-base-200 rounded-r-2xl'>
+            <div className='animate__animated animate__fadeInRight w-8/12 flex flex-row-reverse h-full my-5 lg:h-[calc(100vh-200px)] mx-auto rounded-2xl bg-white border border-[#FF3F33] shadow-2xl shadow-red-400'>
+                <div className='w-full lg:w-1/2 px-6 pb-20 pt-10 bg-base-200 rounded-2xl lg:rounded-r-2xl'>
                     <div className='text-center mb-4'>
                         <h3 className='text-3xl pb-2 font-bold text-[#FF3F33]'>Let’s Get You Started</h3>
                         <p className='text-sm  text-gray-400 '>Sign up and access endless bulk opportunities.</p>
@@ -137,7 +137,7 @@ const Register = () => {
                     </div>
 
                 </div>
-                <div>
+                <div className='hidden lg:block'>
                     <Lottie animationData={animation} style={{ paddingRight: '40px', paddingTop: '28px' }}></Lottie>
                 </div>
             </div>
