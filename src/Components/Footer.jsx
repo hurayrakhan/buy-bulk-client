@@ -38,11 +38,11 @@ const Footer = () => {
                 <div>
                     <h3 className="font-semibold text-lg mb-3">For Buyers</h3>
                     <ul className="space-y-2 text-sm">
-                        <li><a href="#" className="hover:text-[#FF3F33]">Browse Products</a></li>
-                        <li><a href="#" className="hover:text-[#FF3F33]">Bulk Deals</a></li>
-                        <li><a href="#" className="hover:text-[#FF3F33]">Order Dashboard</a></li>
-                        <li><a href="#" className="hover:text-[#FF3F33]">Saved Lists</a></li>
-                        <li><a href="#" className="hover:text-[#FF3F33]">Support</a></li>
+                        <li><Link to={'/category/All'} className="hover:text-[#FF3F33]">Browse Products</Link></li>
+                        <li><Link to={'/category/All'} className="hover:text-[#FF3F33]">Bulk Deals</Link></li>
+                        <li><Link to={'/myOrders'} className="hover:text-[#FF3F33]">Order Dashboard</Link></li>
+                        <li><Link to={'/cart'} className="hover:text-[#FF3F33]">Saved Lists</Link></li>
+                        <li><Link to={'/aboutUs'} className="hover:text-[#FF3F33]">Support</Link></li>
                     </ul>
                 </div>
 
@@ -50,11 +50,11 @@ const Footer = () => {
                 <div>
                     <h3 className="font-semibold text-lg mb-3">For Suppliers</h3>
                     <ul className="space-y-2 text-sm">
-                        <li><a href="#" className="hover:text-[#FF3F33]">Sell on Buy$Bulk</a></li>
-                        <li><a href="#" className="hover:text-[#FF3F33]">Pricing Plans</a></li>
-                        <li><a href="#" className="hover:text-[#FF3F33]">Supplier Dashboard</a></li>
-                        <li><a href="#" className="hover:text-[#FF3F33]">Manage Inventory</a></li>
-                        <li><a href="#" className="hover:text-[#FF3F33]">Seller Resources</a></li>
+                        <li><Link to={'/addProduct'} className="hover:text-[#FF3F33]">Sell on Buy$Bulk</Link></li>
+                        <li><Link to={'/'} className="hover:text-[#FF3F33]">Pricing Plans</Link></li>
+                        <li><Link to={'/dashboard'} className="hover:text-[#FF3F33]">Supplier Dashboard</Link></li>
+                        <li><Link to={'/'} className="hover:text-[#FF3F33]">Manage Inventory</Link></li>
+                        <li><Link to={'/myProducts'} className="hover:text-[#FF3F33]">Seller Resources</Link></li>
                     </ul>
                 </div>
 
