@@ -38,7 +38,7 @@ const Dashboard = () => {
       <Helmet><title>Dashboard | Buy&Bulk</title></Helmet>
 
       {/* Sidebar */}
-      <aside className={`fixed md:static z-30 bg-white w-64 shadow-lg h-screen transform transition-transform duration-300 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}>
+      <aside className={`fixed md:static z-30 bg-base-100 w-64 shadow-lg h-screen transform transition-transform duration-300 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}>
         <div className="flex flex-col items-center py-6 border-b">
           <img src={user?.photoURL || '/default-user.png'} alt="User" className="w-20 h-20 rounded-full object-cover" />
           <h2 className="mt-3 font-bold text-[#FF3F33] text-lg">{user?.displayName || 'User'}</h2>
@@ -54,7 +54,7 @@ const Dashboard = () => {
       {/* Main content */}
       <div className="flex-1">
         {/* Mobile topbar */}
-        <div className="md:hidden flex justify-between items-center bg-white px-4 py-3 shadow">
+        <div className="md:hidden flex justify-between items-center bg-base-100 px-4 py-3 shadow">
           <button onClick={() => setSidebarOpen(!sidebarOpen)}>
             <Menu className="text-[#FF3F33]" />
           </button>
