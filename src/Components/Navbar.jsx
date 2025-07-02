@@ -84,9 +84,10 @@ const Navbar = () => {
         <>
             {/* Sidebar */}
             <div
-                className={`fixed top-0 left-0 h-full w-64 bg-white shadow-lg z-50 flex flex-col transform transition-transform duration-300
+                className={`fixed top-0 left-0 h-full w-64 bg-white shadow-lg z-50 flex flex-col transform transition-transform duration-300 
               ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}
             >
+                <p onClick={() => setSidebarOpen(false)} className='absolute text-2xl right-5 top-3'>x</p>
                 <div className="p-4 border-b border-gray-200 flex flex-col items-center">
                     {user?.photoURL ? (
                         <img src={user.photoURL} alt="Profile" className="w-16 h-16 rounded-full object-cover mb-2" />
@@ -141,7 +142,7 @@ const Navbar = () => {
               ${sidebarOpen ? 'pl-64' : 'pl-0'}`}
             >
                 <div className="w-11/12 mx-auto flex justify-between items-center">
-                    <div className="flex items-center gap-2 cursor-pointer" onClick={() => setSidebarOpen(!sidebarOpen)}>
+                    <div className={`${sidebarOpen ? 'hidden md:flex ' : ''}flex items-center gap-2 cursor-pointer`} onClick={() => setSidebarOpen(!sidebarOpen)}>
                         <img className="h-12" src="./logo.png" alt="Logo" />
                         <h3 className="unna-regular font-bold text-3xl">
                             Buy<span className="text-[#FF3F33] text-4xl">&</span>Bulk

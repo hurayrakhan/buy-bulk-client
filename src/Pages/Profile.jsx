@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { AuthContext } from '../Providers/AuthProvider';
 import { updateProfile, updateEmail, updatePassword } from 'firebase/auth';
 import { toast } from 'react-toastify';
+import { Helmet } from 'react-helmet';
 
 const Profile = () => {
     const { user } = useContext(AuthContext);
