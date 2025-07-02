@@ -62,7 +62,7 @@ const MyOrders = () => {
         <title>My Orders | Buy&Bulk</title>
         <meta name="description" content="View and manage your recent orders from Buy&Bulk." />
       </Helmet>
-      <h2 className="text-3xl font-bold mb-6 text-[#FF3F33]">My Orders</h2>
+      <h2 className="text-3xl text-center font-bold mb-6 text-[#FF3F33]">My Orders</h2>
 
       {loading ? (
         <p className="text-center text-gray-500">Loading your orders...</p>

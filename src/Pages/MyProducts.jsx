@@ -68,7 +68,7 @@ const MyProducts = () => {
                     </Link>
                 </div>
             ) : (
-                <div className="grid md:grid-cols-3 gap-6">
+                <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
                     {products.map((product, index) => (
                         <Fade key={index} duration={1000}>
                             <MyProductCard

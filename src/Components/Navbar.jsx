@@ -137,7 +137,7 @@ const Navbar = () => {
 
             {/* Navbar */}
             <div
-                className={`sticky z-20 backdrop-blur-lg inset-0 top-0 w-full transition-all duration-300
+                className={`sticky z-40 backdrop-blur-lg inset-0 top-0 w-full transition-all duration-300
               ${sidebarOpen ? 'pl-64' : 'pl-0'}`}
             >
                 <div className="w-11/12 mx-auto flex justify-between items-center">

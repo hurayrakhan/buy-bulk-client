@@ -17,7 +17,7 @@ const AllProductsTabs = ({ productsData }) => {
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 6;
+  const productsPerPage = 12;
 
   const navigate = useNavigate();
   const categoryData = use(categoryPromise);
@@ -123,7 +123,7 @@ const AllProductsTabs = ({ productsData }) => {
       <div
         className={
           viewMode === 'grid'
-            ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4'
+            ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4'
             : 'flex flex-col gap-4'
         }
       >
